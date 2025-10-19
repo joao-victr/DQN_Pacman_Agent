@@ -4,7 +4,7 @@ from Pacman import game, run, reset, running
 
 class PacmanEnv:
     def __init__(self):
-        self.action_space = 4  # 0: up, 1: right, 2: down, 3: left
+        self.action_space = 4 
         self.prev_score = 0
 
     def reset(self):
@@ -23,9 +23,6 @@ class PacmanEnv:
 
         if not running:
             running = True
-
-
-        # Executa o jogo com a ação selecionada
         run(action)
         
 
@@ -59,5 +56,4 @@ class PacmanEnv:
         return state
 
     def render(self):
-        """Renderiza o jogo (já é feito automaticamente pelo Pygame)."""
         pygame.display.update()

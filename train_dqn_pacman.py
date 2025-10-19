@@ -6,9 +6,7 @@ import numpy as np
 from collections import deque
 from pacman_env import PacmanEnv
 
-# ======================
-# 1. Rede Neural DQN
-# ======================
+
 class DQN(nn.Module):
     def __init__(self, state_dim, action_dim):
         super().__init__()
@@ -23,9 +21,7 @@ class DQN(nn.Module):
     def forward(self, x):
         return self.net(x)
 
-# ======================
-# 2. Funções auxiliares
-# ======================
+
 def select_action(state, epsilon, policy_net, action_dim):
     if random.random() < epsilon:
         return random.randrange(action_dim)
@@ -34,7 +30,6 @@ def select_action(state, epsilon, policy_net, action_dim):
         return q_values.argmax().item()
 
 def replay(memory, batch_size, gamma, policy_net, target_net, optimizer):
-    """Treina o DQN com minibatch do replay buffer."""
     if len(memory) < batch_size:
         return
 
@@ -56,14 +51,7 @@ def replay(memory, batch_size, gamma, policy_net, target_net, optimizer):
     loss.backward()
     optimizer.step()
 
-# ======================
-# 3. Hiperparâmetros
-# ======================
 
-
-# ======================
-# 4. Inicialização
-# ======================
 def train():
     episodes = 2500
     gamma = 0.99
@@ -104,7 +92,7 @@ def train():
             replay(memory, batch_size, gamma, policy_net, target_net, optimizer)
             state = next_state
 
-        # Atualiza rede alvo
+
         if episode % target_update == 0:
             target_net.load_state_dict(policy_net.state_dict())
 
