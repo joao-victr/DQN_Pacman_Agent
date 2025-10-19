@@ -8,7 +8,7 @@ class PacmanEnv:
         self.prev_score = 0
 
     def reset(self):
-        """Reseta o jogo e retorna o estado inicial."""
+
         reset()
         game.gameOver = False
         game.lives = 1
@@ -17,7 +17,7 @@ class PacmanEnv:
         return state
 
     def step(self, action):
-        """Executa uma ação no jogo e retorna (next_state, reward, done)."""
+
         global running
         pygame.event.pump()
 
