@@ -120,30 +120,26 @@ class Game:
         self.extraLifeGiven = False
         self.musicPlaying = 0
 
-
     def giveReward(self, action):
+        # mudei todas as rewards pra diminuir o loss
+
         if action != 'survive':
             self.nothingHappened = False
-
         if action == 'pellet':
-            # print('pellet')
-            self.reward += 1
+            self.reward += 0.5  # antes 1
         elif action == 'power_pellet':
-            # print('power_pellet')
-            self.reward += 10
+            self.reward += 2.0  # antes 10
         elif action == 'eat_ghost':
-            # print('eat_ghost')
-            self.reward += 50
+            self.reward += 5.0  # antes 50
         elif action == 'death':
-            # print('death')
-            self.reward -= 500
+            self.reward -= 5.0  # antes 500
         elif action == 'survive':
-            # print('survive')
-            self.reward += 0.05
+            self.reward += 0.02  # antes 0.05
         elif action == 'nothing_happened':
-            self.reward -= 0.1
-        
+            self.reward -= 0.01  # antes 0.1
 
+    def isPowerMode(self):
+        return any(ghost.attacked for ghost in self.ghosts)
 
     # Driver method: The games primary update method
     def update(self):
