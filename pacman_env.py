@@ -59,6 +59,17 @@ class PacmanEnv:
             float(game.isPowerMode()) # nao mudou muita coisa, ele continua usando a tatica de ficar parado dps que pega o power_pellet
         ], dtype=np.float32)
 
+        #descomente para testar a v1, e comente o código acima
+
+        #state = np.array([
+        #    pac.dir / 3.0,
+        #    pac.row / len(game.gameBoard), pac.col / len(game.gameBoard[0]),
+        #    ghosts[0].row / len(game.gameBoard), ghosts[0].col / len(game.gameBoard[0]),
+        #    ghosts[1].row / len(game.gameBoard), ghosts[1].col / len(game.gameBoard[0]),
+        #    ghosts[2].row / len(game.gameBoard), ghosts[2].col / len(game.gameBoard[0]),
+        #    ghosts[3].row / len(game.gameBoard), ghosts[3].col / len(game.gameBoard[0]),
+        #], dtype=np.float32)
+
         return state
 
     def render(self):

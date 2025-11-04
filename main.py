@@ -9,7 +9,7 @@ state_dim = len(env.reset())
 action_dim = env.action_space
 
 model = DQN(state_dim, action_dim)
-model.load_state_dict(torch.load("dqn_pacman500.pth"))
+model.load_state_dict(torch.load("models/v2/dqn_pacman_final.pth"))
 model.eval()
 
 state = env.reset()
